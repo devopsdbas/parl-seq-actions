@@ -17,11 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: echo "Hello world"
+
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: echo "Hello world"
+
   publish:
     runs-on: ubuntu-latest
     needs:
@@ -30,10 +32,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: echo "Hello world"
+
   test1:
+    needs: publish
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest ]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
